@@ -1,6 +1,6 @@
 # Flask Boilerplate #
 
-This is a boilerplate for flask application made for quick start of flask projects.
+This is a boilerplate made for quick start of flask projects.
 
 ## Instructions ##
 
