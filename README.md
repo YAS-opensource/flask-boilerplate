@@ -1,8 +1,10 @@
 # Flask Boilerplate #
 
+## Description ##
+
 This is a boilerplate made for quick start of flask projects.
 
-## Instructions ##
+## Installation ##
 
 - Install and run dependencies on virtualenv:
 
@@ -25,7 +27,9 @@ This is a boilerplate made for quick start of flask projects.
   make db_upgrade
   ```
 
-- Now run:
+## Usage ##
+
+- To run the project:
 
   ```bash
   make run
@@ -33,7 +37,13 @@ This is a boilerplate made for quick start of flask projects.
 
   Your server will run at <http://127.0.0.1:5000/>
 
-- Run tests:
+- If you want to run the project on a different port(for example: 8000):
+  
+  ```bash
+  python manage.py runserver 8000
+  ```
+
+- To run tests:
 
   ```bash
   make test
