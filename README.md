@@ -48,3 +48,7 @@ This is a boilerplate made for quick start of flask projects.
   ```bash
   make test
   ```
+
+## Documentations ##
+
+- How to use `Base.py` to create custom views: ![here](https://github.com/YAS-opensource/flask-boilerplate/wiki/Base.py-superclass)
