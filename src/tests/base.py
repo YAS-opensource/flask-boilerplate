@@ -1,16 +1,15 @@
-# project/tests/base.py
-
+import os
 
 from flask_testing import TestCase
 
-from project.server import app, db
+from src import app, db
 
 
-class BaseTestCase(TestCase):
-    """ Base Tests """
+class BaseTesting(TestCase):
+    """ Base tests """
 
     def create_app(self):
-        app.config.from_object('project.server.config.TestingConfig')
+        app.config.from_object("src.config.TestingConfig")
         return app
 
     def setUp(self):

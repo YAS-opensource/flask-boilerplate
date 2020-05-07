@@ -1,99 +1,40 @@
-# Flask JWT Auth
+# Flask Boilerplate #
 
-### Basics
+This is a boilerplate for flask application made for quick start of flask projects.
 
-1. Activate a virtualenv
-2. Install the requirements
+## Instructions ##
 
-### Set Environment Variables without .env file
+- Install and run dependencies on virtualenv:
 
-Update *project/server/config.py*, and then run:
+  ```bash
+  pipenv install
+  pipenv run
+  ```
 
-```sh
-export APP_SETTINGS="project.server.config.DevelopmentConfig"
-```
+- Migrate the database:
 
-or
+  ```bash
+  make create_db
+  make db_init
+  make db_migrate
+  ```
 
-```sh
-export APP_SETTINGS="project.server.config.ProductionConfig"
-```
+- Upgrade the database:
 
-Set a SECRET_KEY:
+  ```bash
+  make db_upgrade
+  ```
 
-```sh
-export SECRET_KEY="change_me"
-```
+- Now run:
 
-### Create DB
+  ```bash
+  make run
+  ```
 
-Create the databases in `psql`:
+  Your server will run at <http://127.0.0.1:5000/>
 
-```sh
-$ psql
-# create database flask_jwt_auth
-# create database flask_jwt_auth_test
-# \q
-```
+- Run tests:
 
-Create the tables and run the migrations:
-
-```sh
-python manage.py create_db
-python manage.py db init
-python manage.py db migrate
-```
-
-### Run the Application
-
-```sh
-python manage.py runserver
-```
-
-Access the application at the address [http://localhost:5000/](http://localhost:5000/)
-
-> Want to specify a different port?
-
-> ```sh
-> $ python manage.py runserver -h 0.0.0.0 -p 8080
-> ```
-
-### Testing
-
-Without coverage:
-
-```sh
-python manage.py test
-```
-
-With coverage:
-
-```sh
-python manage.py cov
-```
-
-### Examples
-
-#### Register
-
-```sh
-curl --header "Content-Type: application/json" \
-    --request POST \
-    --data '{"email":"sihantawsik@gmail.com","password":"abcdef"}' \
-    http://localhost:5000/auth/register
-```
-
-#### Login
-
-```sh
-curl --header "Content-Type: application/json" \
-    --request POST \
-    --data '{"email":"sihantawsik@gmail.com","password":"abcdef"}' \
-    http://localhost:5000/auth/login
-```
-
-#### Check status
-
-```sh
-curl --header "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1ODY1Mzk5NjksImlhdCI6MTU4NjUzOTM2OSwic3ViIjoxfQ.wE8_sQvhgcIBjxpsyUi6KZWAJhajqWvsdEeWbtYnuq8" --header "Content-Type: text/plain" --request GET http://localhost:5000/auth/status
-```
+  ```bash
+  make test
+  ```

@@ -128,5 +128,11 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-#vs code
-.dist/
+# vs code settings
+.vscode
+
+# SQLITE file
+*.db
+
+#temp files
+tmp/

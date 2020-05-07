@@ -1,6 +1,6 @@
 import os
 
-from project.server import app
+from src import app
 
 if __name__ == ("__main__"):
     PORT = int(os.environ.get("PORT", 3000))
