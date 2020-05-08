@@ -33,7 +33,7 @@ class BaseAPI(MethodView):
                 if key not in attributes:
                     raise KeyError
             processed_data = process_func(post_data)
-            class_object = Class(processed_data)
+            class_object = Class(**processed_data)
             db.session.add(class_object)
             db.session.commit()
         except Exception as e:
