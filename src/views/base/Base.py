@@ -7,7 +7,7 @@ from src import bcrypt, db
 class BaseAPI(MethodView):
     """ Base class for other resources """
 
-    def get(self, Class, attribites, status_kwargs, query_kwargs):
+    def get(self, Class, attributes, status_kwargs, query_kwargs):
         objects = list(Class.query.filter_by(**query_kwargs))
         responseCode = status_kwargs["success_code"]
         responseObject = {"status": "success", "data": {}}
