@@ -39,7 +39,7 @@ class BaseAPI(MethodView):
         except Exception as e:
             responseCode = status_kwargs["fail_code"]
             responseObject["status"] = "failed"
-            responseCode["message"] = status_kwargs["fail_msg"]
+            responseObject["message"] = status_kwargs["fail_msg"]
 
         return make_response(jsonify(responseObject)), responseCode
 
