@@ -37,11 +37,11 @@ This is a boilerplate made for quick start of flask projects.
 
   Your server will run at <http://127.0.0.1:5000/>
 
-- If you want to run the project on a different port(for example: 8000):
-  
-  ```bash
-  python manage.py runserver 8000
-  ```
+> If you want to run the project on a different port(for example: 8000):
+>  
+>  ```bash
+>  python manage.py runserver 8000
+>  ```
 
 - To run tests:
 
