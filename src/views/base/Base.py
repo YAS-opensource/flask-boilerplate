@@ -7,15 +7,15 @@ from src import bcrypt, db
 class BaseAPI(MethodView):
     """ Base class for other resources """
 
-    def get(self, Class, fail_msg, query_kwargs, attributes):
+    def get(self, Class, attribites, status_kwargs, query_kwargs):
         objects = list(Class.query.filter_by(**query_kwargs))
-        responseCode = 200
+        responseCode = status_kwargs["success_code"]
         responseObject = {"status": "success", "data": {}}
 
         if len(objects) == 0:
-            responseCode = 404
-            responseObject["status"] = "failed"
-            responseObject["message"] = fail_msg
+            responseCode = status_kwargs["fail_code"]
+            responseObject["status"] = "fail"
+            responseObject["message"] = status_kwargs["fail_msg"]
 
         responseObject["data"] = []
 
