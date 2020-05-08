@@ -52,3 +52,5 @@ This is a boilerplate made for quick start of flask projects.
 ## Documentations ##
 
 - Using `Base.py` to create custom views: [see wiki](https://github.com/YAS-opensource/flask-boilerplate/wiki/Base.py-superclass)
+
+- API endpoints: [see wiki](https://github.com/YAS-opensource/flask-boilerplate/wiki/API-endpoints)
