@@ -23,6 +23,26 @@ class BaseAPI(MethodView):
             responseObject["data"].append(self.object_to_dict(class_object, attributes))
         return make_response(jsonify(responseObject)), responseCode
 
+    def post(self, Class, attributes, process_func, status_kwargs):
+        post_data = request.get_json()
+        responseCode = status_kwargs["success_code"]
+        responseObject = {"status": "success", "data": {}}
+
+        try:
+            for key in post_data:
+                if key not in attributes:
+                    raise KeyError
+            processed_data = process_func(post_data)
+            class_object = Class(processed_data)
+            db.session.add(class_object)
+            db.session.commit()
+        except Exception as e:
+            responseCode = status_kwargs["fail_code"]
+            responseObject["status"] = "failed"
+            responseCode["message"] = status_kwargs["fail_msg"]
+
+        return make_response(jsonify(responseObject)), responseCode
+
     def object_to_dict(self, class_object, attributes):
         """ Returns a dictionary representation of the object.
         :param None:
