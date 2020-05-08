@@ -1,3 +1,1 @@
-account_types = {
-
-}
+account_types = {}

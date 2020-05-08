@@ -22,7 +22,9 @@ class RegisterAPI(MethodView):
                 user = User(
                     username=post_data.get("username"),
                     password=post_data.get("password"),
-                    account_type=int(post_data.get("account_type")) if number_of_types != 0 else None,
+                    account_type=int(post_data.get("account_type"))
+                    if number_of_types != 0
+                    else None,
                 )
                 # insert the user
                 db.session.add(user)
