@@ -33,9 +33,14 @@ class BaseAPI(MethodView):
                 if key not in attributes:
                     raise KeyError
             processed_data = process_func(post_data)
-            class_object = Class(**processed_data)
-            db.session.add(class_object)
-            db.session.commit()
+            if isinstance(processed_data, dict):
+                class_object = Class(**processed_data)
+                db.session.add(class_object)
+                db.session.commit()
+            else:
+                status_kwargs["fail_code"] = processed_data[0]
+                status_kwargs["fail_msg"] = processed_data[1]
+                raise Exception()
         except Exception as e:
             responseCode = status_kwargs["fail_code"]
             responseObject["status"] = "failed"
