@@ -1,10 +1,8 @@
-# Flask Boilerplate #
+# Flask Boilerplate
 
-## Description ##
+A boilerplate made for kick-starting your next flask project, with ready to go authentication(using JWT) module and a base REST api module. Godspeed!
 
-This is a boilerplate made for quick start of flask projects.
-
-## Installation ##
+## Installing dependencies
 
 - Install and run dependencies on virtualenv:
 
@@ -27,7 +25,7 @@ This is a boilerplate made for quick start of flask projects.
   make db_upgrade
   ```
 
-## Usage ##
+## Usage
 
 - To run the project:
 
@@ -37,7 +35,7 @@ This is a boilerplate made for quick start of flask projects.
 
   Your server will run at <http://127.0.0.1:5000/>
 
-> If you want to run the project on a different port(for example: 8000):
+> If you want to run the project on a different port, for example 8000, do this:
 >  
 >  ```bash
 >  python manage.py runserver 8000
