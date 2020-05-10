@@ -50,6 +50,7 @@ class ProductionConfigTest(TestCase):
         self.assertTrue(
             app.config["SQLALCHEMY_DATABASE_URI"] == os.getenv("DATABASE_URL")
         )
+        self.assertFalse(app.config["SQLALCHEMY_DATABASE_URI"] is None)
 
 
 if __name__ == ("__main__"):
