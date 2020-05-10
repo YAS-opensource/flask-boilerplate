@@ -25,6 +25,8 @@ A boilerplate made for kick-starting your next flask project, with ready to go a
   make db_upgrade
   ```
 
+- Add a `.env` file. One is given here as an `example.env`, you must not use this file as is, always edit the secret key to a new secure key, when you develop your application. Modify other variables as per your necessary configuration for your own project.
+
 ## Usage
 
 - To run the project:
@@ -47,7 +49,7 @@ A boilerplate made for kick-starting your next flask project, with ready to go a
   make test
   ```
 
-## Documentations ##
+## Documentations
 
 - Using `Base.py` to create custom views: [see wiki](https://github.com/YAS-opensource/flask-boilerplate/wiki/Base.py-superclass)
 
