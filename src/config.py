@@ -8,7 +8,7 @@ database_name = "flask_jwt_auth"
 class BaseConfig:
     """Base configuration."""
 
-    SECRET_KEY = os.getenv("SECRET_KEY", "what_the_duck")
+    SECRET_KEY = os.getenv("SECRET_KEY")
     DEBUG = False
     BCRYPT_LOG_ROUNDS = 13
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -19,7 +19,7 @@ class DevConfig(BaseConfig):
 
     DEBUG = True
     BCRYPT_LOG_ROUNDS = 4
-    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL", dummy_database)
+    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")
 
 
 class TestingConfig(BaseConfig):
@@ -35,6 +35,6 @@ class TestingConfig(BaseConfig):
 class ProductionConfig(BaseConfig):
     """Production configuration."""
 
-    SECRET_KEY = os.getenv("SECRET_KEY", "what_the_duck")
+    SECRET_KEY = os.getenv("SECRET_KEY")
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL", dummy_database)
+    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")
