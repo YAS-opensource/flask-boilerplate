@@ -1,14 +1,14 @@
 import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-postgres_local_base = "postgresql://postgres:@localhost/"
+dummy_database = "sqlite:///test.db"
 database_name = "flask_jwt_auth"
 
 
 class BaseConfig:
     """Base configuration."""
 
-    SECRET_KEY = os.getenv("SECRET_KEY", "my_precious")
+    SECRET_KEY = os.getenv("SECRET_KEY", "what_the_duck")
     DEBUG = False
     BCRYPT_LOG_ROUNDS = 13
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -19,7 +19,7 @@ class DevConfig(BaseConfig):
 
     DEBUG = True
     BCRYPT_LOG_ROUNDS = 4
-    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")
+    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL", dummy_database)
 
 
 class TestingConfig(BaseConfig):
@@ -35,6 +35,6 @@ class TestingConfig(BaseConfig):
 class ProductionConfig(BaseConfig):
     """Production configuration."""
 
-    SECRET_KEY = os.getenv("SECRET_KEY", "my_precious")
+    SECRET_KEY = os.getenv("SECRET_KEY", "what_the_duck")
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL")
+    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL", dummy_database)

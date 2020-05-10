@@ -14,7 +14,7 @@ class TestingConfigTest(TestCase):
         return app
 
     def test_config_vars(self):
-        self.assertFalse(app.config["SECRET_KEY"] == "my_precious")
+        self.assertFalse(app.config["SECRET_KEY"] is None)
         self.assertTrue(app.config["DEBUG"] == True)
         self.assertTrue(
             app.config["SQLALCHEMY_DATABASE_URI"] == "sqlite:///unittest_db.db"
@@ -29,7 +29,7 @@ class DevConfigTest(TestCase):
         return app
 
     def test_config_vars(self):
-        self.assertFalse(app.config["SECRET_KEY"] == "my_precious")
+        self.assertFalse(app.config["SECRET_KEY"] is None)
         self.assertTrue(app.config["DEBUG"] == True)
         self.assertTrue(
             app.config["SQLALCHEMY_DATABASE_URI"]
@@ -45,7 +45,7 @@ class ProductionConfigTest(TestCase):
         return app
 
     def test_config_vars(self):
-        self.assertFalse(app.config["SECRET_KEY"] == "my_precious")
+        self.assertFalse(app.config["SECRET_KEY"] is None)
         self.assertTrue(app.config["DEBUG"] == False)
         self.assertTrue(
             app.config["SQLALCHEMY_DATABASE_URI"] == os.getenv("DATABASE_URL")
