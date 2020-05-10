@@ -50,7 +50,7 @@ class User(db.Model):
         :return: integer|string
         """
         try:
-            payload = jwt.decode(auth_token, app.config.get("SECRET_KEY"))
+            payload = jwt.decode(auth_token, app.config.get("SECRET_KEY"), algorithms=["HS256"])
             is_blacklisted_token = BlacklistToken.check_blacklist(auth_token)
             if is_blacklisted_token:
                 return "Token blacklisted. Please log in again."
