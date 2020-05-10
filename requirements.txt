@@ -2,15 +2,14 @@ alembic
 bcrypt
 cffi
 click
-coverage
 Flask
 Flask-Bcrypt
 Flask-Cors
 Flask-Migrate
 Flask-Script
 Flask-SQLAlchemy
-Flask-Testing
-flask-testing
+pytest
+pytest-cov
 gunicorn
 itsdangerous
 markupsafe
