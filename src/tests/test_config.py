@@ -1,12 +1,10 @@
 import os
 import unittest
 
-from flask_testing import TestCase
-
 from src import app, db
 
 
-class TestingConfigTest(TestCase):
+class TestingConfigTest(unittest.TestCase):
     """ TestingConfig test """
 
     def create_app(self):
@@ -14,6 +12,7 @@ class TestingConfigTest(TestCase):
         return app
 
     def test_config_vars(self):
+        app = self.create_app()
         self.assertFalse(app.config["SECRET_KEY"] is None)
         self.assertTrue(app.config["DEBUG"] == True)
         self.assertTrue(
@@ -21,7 +20,7 @@ class TestingConfigTest(TestCase):
         )
 
 
-class DevConfigTest(TestCase):
+class DevConfigTest(unittest.TestCase):
     """ DevConfig test """
 
     def create_app(self):
@@ -29,6 +28,7 @@ class DevConfigTest(TestCase):
         return app
 
     def test_config_vars(self):
+        app = self.create_app()
         self.assertFalse(app.config["SECRET_KEY"] is None)
         self.assertTrue(app.config["DEBUG"] == True)
         self.assertTrue(
@@ -37,7 +37,7 @@ class DevConfigTest(TestCase):
         )
 
 
-class ProductionConfigTest(TestCase):
+class ProductionConfigTest(unittest.TestCase):
     """ ProductionConfig test """
 
     def create_app(self):
@@ -45,6 +45,7 @@ class ProductionConfigTest(TestCase):
         return app
 
     def test_config_vars(self):
+        app = self.create_app()
         self.assertFalse(app.config["SECRET_KEY"] is None)
         self.assertTrue(app.config["DEBUG"] == False)
         self.assertTrue(

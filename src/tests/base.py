@@ -1,12 +1,17 @@
 import os
-
-from flask_testing import TestCase
+import unittest
 
 from src import app, db
 
 
-class BaseTesting(TestCase):
+class BaseTesting(unittest.TestCase):
     """ Base tests """
+
+    client = None
+
+    def __init__(self, methodName):
+        self.client = app.test_client(self)
+        super().__init__(methodName)
 
     def create_app(self):
         app.config.from_object("src.config.TestingConfig")
@@ -19,3 +24,6 @@ class BaseTesting(TestCase):
     def tearDown(self):
         db.session.remove()
         db.drop_all()
+
+if __name__ == "__main__":
+    unittest.run
