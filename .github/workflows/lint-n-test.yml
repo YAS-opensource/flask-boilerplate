@@ -35,9 +35,9 @@ jobs:
       run: |
         python manage.py test
       env:
-        TESTING=True
-        FLASK_DEBUG=False
-        SQLALCHEMY_TRACK_MODIFICATIONS=False
-        SECRET_KEY=abcde
-        APP_SETTINGS=src.config.TestingConfig
-        DATABASE_URL=sqlite:///test.db
+        TESTING: True
+        FLASK_DEBUG: False
+        SQLALCHEMY_TRACK_MODIFICATIONS: False
+        SECRET_KEY: abcde
+        APP_SETTINGS: src.config.TestingConfig
+        DATABASE_URL: sqlite:///test.db
