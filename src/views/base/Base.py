@@ -32,7 +32,7 @@ class BaseAPI(MethodView):
             for key in post_data:
                 if key not in attributes:
                     raise KeyError
-            processed_data = process_func(post_data)
+            processed_data = process_func(request)
             if isinstance(processed_data, dict):
                 class_object = Class(**processed_data)
                 db.session.add(class_object)
