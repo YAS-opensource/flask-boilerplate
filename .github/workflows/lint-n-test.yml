@@ -33,7 +33,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Run tests
       run: |
-        pytest
+        pytest --cov-report=xml --cov=./
       env:
         TESTING: True
         FLASK_DEBUG: False
@@ -41,3 +41,12 @@ jobs:
         SECRET_KEY: abcde
         APP_SETTINGS: src.config.TestingConfig
         DATABASE_URL: sqlite:///test.db
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ./coverage.xml
+        flags: unittests
+        env_vars: OS,PYTHON
+        name: codecov-umbrella
+        fail_ci_if_error: true
