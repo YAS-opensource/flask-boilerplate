@@ -1,5 +1,5 @@
 install:
-	sudo pip -r install -U requirements.txt
+	sudo pip -r install --sequential -U requirements.txt
 
 run:
 	python manage.py runserver
