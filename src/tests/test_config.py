@@ -1,58 +1,35 @@
 import os
-import unittest
-
 from src import app, db
 
 
-class TestingConfigTest(unittest.TestCase):
-    """ TestingConfig test """
+def test_testingConfig():
+    """TestingConfig test."""
 
-    def create_app(self):
-        app.config.from_object("src.config.TestingConfig")
-        return app
+    app.config.from_object("src.config.TestingConfig")
 
-    def test_config_vars(self):
-        app = self.create_app()
-        self.assertFalse(app.config["SECRET_KEY"] is None)
-        self.assertTrue(app.config["DEBUG"] == True)
-        self.assertTrue(
-            app.config["SQLALCHEMY_DATABASE_URI"] == "sqlite:///unittest_db.db"
-        )
+    assert not app.config["SECRET_KEY"] is None
+    assert app.config["DEBUG"] == True
+    assert app.config["SQLALCHEMY_DATABASE_URI"] == "sqlite:///unittest_db.db"
 
 
-class DevConfigTest(unittest.TestCase):
-    """ DevConfig test """
+def test_devConfig():
+    """DevConfig test."""
 
-    def create_app(self):
-        app.config.from_object("src.config.DevConfig")
-        return app
+    app.config.from_object("src.config.DevConfig")
 
-    def test_config_vars(self):
-        app = self.create_app()
-        self.assertFalse(app.config["SECRET_KEY"] is None)
-        self.assertTrue(app.config["DEBUG"] == True)
-        self.assertTrue(
-            app.config["SQLALCHEMY_DATABASE_URI"]
-            == os.getenv("DATABASE_URL", "sqlite:///test.db")
-        )
+    assert not (app.config["SECRET_KEY"] is None)
+    assert app.config["DEBUG"] == True
+    assert app.config["SQLALCHEMY_DATABASE_URI"] == os.getenv(
+        "DATABASE_URL", "sqlite:///test.db"
+    )
 
 
-class ProductionConfigTest(unittest.TestCase):
-    """ ProductionConfig test """
+def test_productionConfig():
+    """ProductionConfig test."""
 
-    def create_app(self):
-        app.config.from_object("src.config.ProductionConfig")
-        return app
+    app.config.from_object("src.config.ProductionConfig")
 
-    def test_config_vars(self):
-        app = self.create_app()
-        self.assertFalse(app.config["SECRET_KEY"] is None)
-        self.assertTrue(app.config["DEBUG"] == False)
-        self.assertTrue(
-            app.config["SQLALCHEMY_DATABASE_URI"] == os.getenv("DATABASE_URL")
-        )
-        self.assertFalse(app.config["SQLALCHEMY_DATABASE_URI"] is None)
-
-
-if __name__ == ("__main__"):
-    unittest.main()
+    assert not (app.config["SECRET_KEY"] is None)
+    assert app.config["DEBUG"] == False
+    assert app.config["SQLALCHEMY_DATABASE_URI"] == os.getenv("DATABASE_URL")
+    assert not (app.config["SQLALCHEMY_DATABASE_URI"] is None)
