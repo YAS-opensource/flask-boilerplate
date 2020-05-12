@@ -1,11 +1,9 @@
 import os
-import pytest
-
 from src import app, db
 
 
 def test_testingConfig():
-    """ TestingConfig test """
+    """ TestingConfig test. """
 
     app.config.from_object("src.config.TestingConfig")
 
@@ -15,7 +13,7 @@ def test_testingConfig():
 
 
 def test_devConfig():
-    """ DevConfig test """
+    """ DevConfig test. """
 
     app.config.from_object("src.config.DevConfig")
 
@@ -27,7 +25,7 @@ def test_devConfig():
 
 
 def test_productionConfig():
-    """ ProductionConfig test """
+    """ ProductionConfig test. """
 
     app.config.from_object("src.config.ProductionConfig")
 

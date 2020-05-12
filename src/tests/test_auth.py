@@ -1,9 +1,7 @@
 import json
-import pytest
-from sqlalchemy import exc
 
-from src.models import User, BlacklistToken
-from src.tests.conftest import client, database
+from src.models import User
+from src.tests.conftest import database
 from src.defs.types import account_types
 
 is_type = True if len(account_types) > 0 else False
@@ -45,7 +43,7 @@ def base_auth_check(
 
 
 def test_registration(client, database):
-    """ User registration test """
+    """ User registration test. """
 
     for user in users:
         username = user[0]
@@ -67,7 +65,7 @@ def test_registration(client, database):
 
 
 def test_registered_with_already_registered_user(client, database):
-    """ Test registration with already registered email"""
+    """ Test registration with already registered email. """
 
     for user in users:
         username = user[0]
@@ -84,7 +82,7 @@ def test_registered_with_already_registered_user(client, database):
 
 
 def test_registered_user_login(client, database):
-    """ Test for login of registered-user login """
+    """ Test for login of registered-user login. """
 
     for user in users:
         username = user[0]
@@ -95,7 +93,7 @@ def test_registered_user_login(client, database):
 
 
 def test_non_registered_user_login(client, database):
-    """ Test for login of non-registered user """
+    """ Test for login of non-registered user. """
 
     for user in non_registered_users:
         username = user[0]
@@ -106,7 +104,7 @@ def test_non_registered_user_login(client, database):
 
 
 def test_user_status(client):
-    """ Test for user status """
+    """ Test for user status. """
 
     for user in users:
         username = user[0]
@@ -127,7 +125,7 @@ def test_user_status(client):
 
 
 def test_user_status_malformed_bearer_token(client):
-    """ Test for user status with malformed bearer token"""
+    """ Test for user status with malformed bearer token. """
     for user in users:
         username = user[0]
         user_data = resp_register[username].data
@@ -142,7 +140,7 @@ def test_user_status_malformed_bearer_token(client):
 
 
 def test_valid_logout(client):
-    """ Testing logout before token expires """
+    """ Testing logout before token expires. """
 
     for user in users:
         username = user[0]
@@ -161,7 +159,7 @@ def test_valid_logout(client):
 
 
 def test_balcklisted_token_logout(client):
-    """ Testing logout before token expires """
+    """ Testing blaclisted token logout before token expires. """
 
     for user in users:
         username = user[0]
