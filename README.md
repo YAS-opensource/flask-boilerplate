@@ -1,5 +1,8 @@
 # Flask Boilerplate
 
+[![Actions Status](https://github.com/YAS-opensource/flask-boilerplate/workflows/flask-boilerplate/badge.svg)](https://github.com/YAS-opensource/flask-boilerplate/actions)
+[![codecov](https://codecov.io/gh/YAS-opensource/flask-boilerplate/branch/master/graph/badge.svg)](https://codecov.io/gh/YAS-opensource/flask-boilerplate)
+[![Maintainability](https://api.codeclimate.com/v1/badges/0461212239959a3242a9/maintainability)](https://codeclimate.com/github/YAS-opensource/flask-boilerplate/maintainability)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/945173f5a1d24513b0f1e709216c6baf)](https://app.codacy.com/gh/YAS-opensource/flask-boilerplate?utm_source=github.com&utm_medium=referral&utm_content=YAS-opensource/flask-boilerplate&utm_campaign=Badge_Grade_Settings)
 
 A boilerplate made for kick-starting your next flask project, with ready to go authentication(using JWT) module and a base REST api module. Godspeed!
