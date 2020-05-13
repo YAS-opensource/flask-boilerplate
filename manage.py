@@ -1,3 +1,4 @@
+# pylint: disable=D104
 import os
 import unittest
 import coverage
@@ -12,6 +13,7 @@ manager = Manager(app)
 
 # migrations
 manager.add_command("db", MigrateCommand)
+
 
 @manager.command
 def create_db():

@@ -2,6 +2,7 @@ from flask import request, make_response, jsonify
 
 from src.models import User
 
+
 def login_required(function):
     def wrap(*args, **kwargs):
         auth_header = request.headers.get("Authorization")
