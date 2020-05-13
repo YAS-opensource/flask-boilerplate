@@ -7,8 +7,6 @@
 
 A boilerplate made for kick-starting your next flask project, with ready to go authentication(using JWT) module and a base REST api module. Godspeed!
 
-## Features
-
 - Out of the box Authentication with JWT
 - And extendable base module to create new API endpoints with ease. Supported methods are: GET, POST
 - Out of the box Authentication checker decorator that you can add to any endpoint!
@@ -63,5 +61,4 @@ A boilerplate made for kick-starting your next flask project, with ready to go a
 ## Documentations
 
 - Using `Base.py` to create custom views: [see wiki](https://github.com/YAS-opensource/flask-boilerplate/wiki/Base.py-superclass)
-
 - API endpoints: [see wiki](https://github.com/YAS-opensource/flask-boilerplate/wiki/API-endpoints)
