@@ -1,3 +1,4 @@
+# pylint: disable=R0201
 from flask import request, make_response, jsonify
 from flask.views import MethodView
 
