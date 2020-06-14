@@ -1,9 +1,9 @@
 # pylint: disable=401
+# pylint: disable=R0201
 import jwt
 import datetime
 
 from src import app, db, bcrypt
-from src.defs import types
 
 
 class User(db.Model):

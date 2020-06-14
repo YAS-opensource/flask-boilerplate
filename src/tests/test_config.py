@@ -1,5 +1,5 @@
 import os
-from src import app, db
+from src import app
 
 
 def test_testingConfig():
