@@ -68,7 +68,7 @@ class BaseAPI(MethodView):
                 status_kwargs["fail_code"] = processed_data[0]
                 status_kwargs["fail_msg"] = processed_data[1]
                 raise Exception()
-        except Exception as e:
+        except Exception:
             responseCode = status_kwargs["fail_code"]
             responseObject["status"] = "fail"
             responseObject["message"] = status_kwargs["fail_msg"]
