@@ -32,7 +32,7 @@ class BaseAPI(MethodView):
             for key in post_data:
                 if key not in attributes:
                     raise KeyError
-            processed_data = process_func(request)
+            processed_data = process_func()
             if isinstance(processed_data, dict):
                 class_object = Class(**processed_data)
                 db.session.add(class_object)
@@ -44,6 +44,32 @@ class BaseAPI(MethodView):
         except Exception as e:
             responseCode = status_kwargs["fail_code"]
             responseObject["status"] = "failed"
+            responseObject["message"] = status_kwargs["fail_msg"]
+
+        return make_response(jsonify(responseObject)), responseCode
+
+    def put(self, Class, attributes, process_func, status_kwargs):
+        post_data = request.get_json()
+        responseCode = status_kwargs["success_code"]
+        responseObject = {"status": "success", "data": {}}
+
+        try:
+            for key in attributes:
+                if key not in post_data.keys():
+                    raise KeyError
+            processed_data, query_kwargs = process_func()
+            if isinstance(processed_data, dict):
+                class_object = Class.query.filter_by(**query_kwargs).first()
+                for key in processed_data.keys():
+                    setattr(class_object, key, processed_data[key])
+                db.session.commit()
+            else:
+                status_kwargs["fail_code"] = processed_data[0]
+                status_kwargs["fail_msg"] = processed_data[1]
+                raise Exception()
+        except Exception as e:
+            responseCode = status_kwargs["fail_code"]
+            responseObject["status"] = "fail"
             responseObject["message"] = status_kwargs["fail_msg"]
 
         return make_response(jsonify(responseObject)), responseCode
