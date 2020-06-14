@@ -1,7 +1,7 @@
 from flask import request, make_response, jsonify
 from flask.views import MethodView
 
-from src import bcrypt, db
+from src import db
 from src.models import User, BlacklistToken
 
 
@@ -23,7 +23,7 @@ class LogoutAPI(MethodView):
                 }
                 return make_response(jsonify(responseObject)), 401
         else:
-            auth_token = ""
+            auth_token = None
         if auth_token:
             resp = User.decode_auth_token(auth_token)
             if not isinstance(resp, str):

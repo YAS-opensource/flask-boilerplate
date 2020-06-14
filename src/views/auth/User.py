@@ -1,8 +1,7 @@
 from flask import request, make_response, jsonify
 from flask.views import MethodView
 
-from src import bcrypt, db
-from src.models import User, BlacklistToken
+from src.models import User
 
 
 class UserAPI(MethodView):
