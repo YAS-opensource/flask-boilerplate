@@ -8,7 +8,7 @@ from src import db
 class BaseAPI(MethodView):
     """ Base class for other resources """
 
-    def get(self, Class, attributes, status_kwargs, query_kwargs):
+    def get(self, Class, attributes, status_kwargs, query_kwargs, process_func=None):
         objects = list(Class.query.filter_by(**query_kwargs))
         responseCode = status_kwargs["success_code"]
         responseObject = {"status": "success", "data": {}}
@@ -22,6 +22,8 @@ class BaseAPI(MethodView):
 
         for class_object in objects:
             responseObject["data"].append(self.object_to_dict(class_object, attributes))
+        if process_func:
+            process_func(responseObject["data"])
         return make_response(jsonify(responseObject)), responseCode
 
     def post(self, Class, attributes, process_func, status_kwargs):
